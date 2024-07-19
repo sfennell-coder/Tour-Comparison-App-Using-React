@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'; // import from react step 2 requirement
-
 const apiURL = 'https://course-api.com/react-tours-project'; // api url given from canvas assignment
 
 export default function Gallery(){
@@ -18,11 +17,9 @@ export default function Gallery(){
             alert('Unforunately, the system was unable to fetch the tour data from the api. Please, contact IS Support.');
         }
     }
-
     useEffect(()=>{// react component step 2 requirement
         getTours();
     },[])
-
     // hide tour from display and read less/read more function for button in return step 2 requirements
     let hideTour = (id)=>{
         const manageTour = tourLists.filter((tourList)=>tourList.id !== id);
@@ -42,8 +39,8 @@ export default function Gallery(){
                     <h3>{tourList.name}</h3>
                     <img src={tourList.image}
                     alt={tourList.name}/>
-                    {`$${tourList.price}`}
-                    <div>
+                    <p>{`$${tourList.price}`}</p>
+                    <div className='rmrlInfo'>
                         {tourList.showDetails ? tour.info : tourList.substring(0,50)+'...'} 
                         <button onClick={()=> readMoreLess(tourList.id)}>
                             {tourList.showDetails ? 'Read Less' : 'Read More'}
